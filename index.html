@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body
+    style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTX7KR-owqgcr2syHzeN7y_gvDt3I83uNZNxA&s');">
+    <div class="background">
+        <div style="display: flex;">
+            <div class="timer" id="demo">
+                <button onclick="reset()"></button>
+            </div>
+            <button class="button-80" onclick="reset()">Restart</button>
+
+            <button class="button-4" type="button" onClick="onBlackWins()">Add a Win</button>
+            <p class="button-5">Black Team: <a id="clicks">0</a></p>
+
+
+            <button class="button-4" type="button" onClick="onWhiteWins()">Add a Win</button>
+            <p class="button-5">White Team: <a id="clicks1">0</a></p>
+
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+                  <h1>Sorry, Game Over</h1>
+                </div>
+              
+              </div>
+            
+
+            <!-- <button onclick="change()">switch</button> -->
+
+            <select onchange="selectedTeam(this.selectedIndex)" class="option" id="types">
+                <option selected id="Original" onclick="" value="Original">Original</option>
+                <option id="3-D" value="3-D">3-D - Wood</option>
+                <option id="8-Bit" onclick="" value="8-Bit">News Paper</option>
+                <option id="Light" onclick="" value="Light">Light</option>
+            </select>
+
+        </div>
+        <div class="border">
+            <div class="row">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">1</span><img id="A-1" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1920px-Chess_rdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="B-1"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Chess_ndt45.svg/1920px-Chess_ndt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="C-1"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Chess_bdt45.svg/1920px-Chess_bdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="D-1"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Chess_qdt45.svg/1920px-Chess_qdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="E-1"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Chess_kdt45.svg/1920px-Chess_kdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="F-1"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Chess_bdt45.svg/1920px-Chess_bdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="G-1"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Chess_ndt45.svg/1920px-Chess_ndt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="H-1"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Chess_rdt45.svg/1920px-Chess_rdt45.svg.png">
+                </div>
+            </div>
+            <div class="row">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><span
+                        style="position: absolute;">2</span><img id="A-2" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="B-2"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="C-2"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="D-2"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="E-2"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="F-2"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="G-2"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="H-2"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Chess_pdt45.svg/1920px-Chess_pdt45.svg.png">
+                </div>
+            </div>
+            <div class="row">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">3</span></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+            </div>
+            <div class="row">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><span
+                        style="position: absolute;">4</span></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+            </div>
+            <div class="row">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">5</span></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+            </div>
+            <div class="row">
+                <div class="brown"><span style="position: absolute;" ondrop="drop(event)"
+                        ondragover="allowDrop(event)">6</span></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+                <div id="saver" ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"></div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"></div>
+            </div>
+            <div class="row">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">7</span>
+                    <img id="A-7" ondragstart="drag(event)" id="drag1" draggable="true" ondragstart="drag(event)"
+                        class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="B-7"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="C-7"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="D-7"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="E-7"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="F-7"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><img id="G-7"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><img id="H-7"
+                        ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Chess_plt45.svg/1920px-Chess_plt45.svg.png">
+                </div>
+            </div>
+            <div class="row">
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown-1"><span
+                        style="position: absolute;">8 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        A</span><img id="A-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Chess_rlt45.svg/1920px-Chess_rlt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B</span>
+                    <img id="B-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Chess_nlt45.svg/1920px-Chess_nlt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><span
+                        style="position: absolute;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C</span>
+                    <img id="C-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Chess_blt45.svg/1920px-Chess_blt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D</span>
+                    <img id="D-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Chess_qlt45.svg/1920px-Chess_qlt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><span
+                        style="position: absolute;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;E</span>
+                    <img id="E-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Chess_klt45.svg/1920px-Chess_klt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F</span>
+                    <img id="F-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Chess_blt45.svg/1920px-Chess_blt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="brown"><span
+                        style="position: absolute;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G</span>
+                    <img id="G-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Chess_nlt45.svg/1920px-Chess_nlt45.svg.png">
+                </div>
+                <div ondrop="drop(event)" ondragover="allowDrop(event)" class="white"><span
+                        style="position: absolute;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H</span>
+                    <img id="H-8" ondragstart="drag(event)" class="image-white"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Chess_rlt45.svg/1920px-Chess_rlt45.svg.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+
+</html>
