@@ -248,15 +248,15 @@ border-radius: 10px;
       
       /* Modal Content */
       .modal-content {
-        background-color: grey;
+        background-color: white;
         margin: auto;
         padding: 20px;
-        border: 1px solid #888;
+        border: 1px solid black;
         width: 80%;
         height: 500px;
       }
       
-      /* The Close Button */
+      The Close Button
       .close {
         color: black;
         float: right;
